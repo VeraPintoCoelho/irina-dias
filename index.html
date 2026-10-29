@@ -257,7 +257,7 @@
     .wa-float { position: fixed; z-index: 25; right: 24px; bottom: 23px; width: 58px; height: 58px; display:grid; place-items:center; border-radius:50%; background:#3e7156; color:#fff; box-shadow:0 8px 28px rgba(14,49,29,.20); transition:transform .2s, background .2s; }
     .wa-float:hover { background:#345d48; transform:translateY(-3px); }
     .wa-float svg { width: 28px; height: 28px; }
-    [data-reveal] { opacity:0; transform:translateY(19px); transition:opacity .65s ease, transform .65s ease; }
+    [data-reveal] { opacity:1; transform:none; }
     [data-reveal].is-visible { opacity:1; transform:none; }
     @media (max-width: 1080px) {
       .nav-links { gap:16px; }
@@ -528,7 +528,8 @@ body{background:var(--cream);color:var(--ink)}h1,h2,h3{color:var(--ink)}.section
       document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') closeMenu();
       });
-      document.getElementById('year').textContent = new Date().getFullYear();
+      var yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
       var revealItems = document.querySelectorAll('[data-reveal]');
       if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         var observer = new IntersectionObserver(function (entries) {
